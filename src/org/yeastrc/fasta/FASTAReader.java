@@ -18,7 +18,7 @@ package org.yeastrc.fasta;
 
 import java.io.BufferedReader;
 import java.io.File;
-import java.io.FileReader;
+import java.io.FileInputStream;
 import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.util.HashSet;
@@ -40,7 +40,7 @@ public class FASTAReader {
 	public static FASTAReader getInstance( String filename ) throws Exception {
 
 		if (filename == null)
-			throw new Exception( "filename may not be null" );
+			throw new IllegalArgumentException( "filename may not be null" );
 
 		return getInstance( new File( filename ) );
 	}
@@ -53,10 +53,20 @@ public class FASTAReader {
 	 */
 	public static FASTAReader getInstance( File file ) throws Exception {
 
-		FASTAReader reader = new FASTAReader();
-		reader.br = new BufferedReader( new FileReader( file ) );
 
-		return reader;
+		if ( file == null ) {
+			
+			throw new IllegalArgumentException( "file may not be null" );
+		}
+		
+		if ( ! file.exists() ) {
+			
+			throw new IllegalArgumentException( "File does not exist: " + file.getAbsolutePath() );
+		}
+		
+		FileInputStream fileInputStream = new FileInputStream( file );
+		
+		return getInstance( fileInputStream );
 	}
 
 
@@ -66,14 +76,16 @@ public class FASTAReader {
 	 * @return
 	 * @throws Exception If there is a problem
 	 */
-	public static FASTAReader getInstance( InputStream is ) throws Exception {
+	public static FASTAReader getInstance( InputStream inputStream ) throws Exception {
 
-		if (is == null)
-			throw new Exception( "is may not be null" );
+		if (inputStream == null)
+			throw new IllegalArgumentException( "inputStream may not be null" );
 
 
 		FASTAReader reader = new FASTAReader();
-		reader.br = new BufferedReader( new InputStreamReader( is ) );
+
+		InputStreamReader isr = new InputStreamReader( inputStream, FASTAReaderConstants.inputCharSet );
+		reader.br = new BufferedReader( isr );
 
 		return reader;
 	}
