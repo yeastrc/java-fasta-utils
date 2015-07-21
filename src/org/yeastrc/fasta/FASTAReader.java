@@ -106,9 +106,10 @@ public class FASTAReader {
 	 * Get the next entry in the FASTA file. Returns null if end of file has been reached.
 	 *
 	 * @return
+	 * @throws FASTADataErrorException for data errors
 	 * @throws Exception
 	 */
-	public FASTAEntry readNext() throws Exception {
+	public FASTAEntry readNext() throws FASTADataErrorException, Exception {
 
 		/*
 		 * It is assumed the last read correctly returned a Set of headers and a sequence
@@ -126,7 +127,7 @@ public class FASTAReader {
 		this.lineNumber++;
 
 		if (!line.startsWith( ">" ) )
-			throw new Exception( "Line Number: " + this.lineNumber + " - Expected header line, but line did not start with \">\"." );
+			throw new FASTADataErrorException( "Line Number: " + this.lineNumber + " - Expected header line, but line did not start with \">\"." );
 
 		String headerLine = line;
 
@@ -154,7 +155,7 @@ public class FASTAReader {
 			this.lastLineRead = line;
 		}
 		if (line == null || line.startsWith( ">" ))
-			throw new Exception( "Did not get a sequence line after a header line (Line Number: " + this.lineNumber );
+			throw new FASTADataErrorException( "Did not get a sequence line after a header line (Line Number: " + this.lineNumber );
 
 
 		// loop through the file, reading sequence lines until we hit the next header line (or the end of the file)
