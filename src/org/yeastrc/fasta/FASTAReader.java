@@ -126,6 +126,8 @@ public class FASTAReader {
 		if (line == null) return null;			// we've reached the end of the file
 		this.lineNumber++;
 
+		int headerLineNumber = this.lineNumber;
+		
 		if (!line.startsWith( ">" ) )
 			throw new FASTADataErrorException( "Line Number: " + this.lineNumber + " - Expected header line, but line did not start with \">\"." );
 
@@ -182,7 +184,7 @@ public class FASTAReader {
 		}
 
 		// If we've made it here, we've read another sequence entry in the FASTA data
-		return new FASTAEntry( headers, sequence, headerLine );
+		return new FASTAEntry( headers, sequence, headerLine, headerLineNumber );
 	}
 
 	private BufferedReader br;

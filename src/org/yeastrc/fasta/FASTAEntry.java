@@ -49,6 +49,21 @@ public final class FASTAEntry {
 		this.headers = headers;
 		this.sequence = sequence;
 		this.headerLine = headerLine;
+		this.headerLineNumber = -1; // set default
+	}
+	
+
+	/**
+	 * Get an immutable FASTAEntry
+	 * @param headers
+	 * @param sequence
+	 * @param headerLine
+	 */
+	public FASTAEntry( Set<FASTAHeader> headers, StringBuffer sequence, String headerLine, int headerLineNumber ) {
+		this.headers = headers;
+		this.sequence = sequence;
+		this.headerLine = headerLine;
+		this.headerLineNumber = headerLineNumber;
 	}
 
 	public Set<FASTAHeader> getHeaders() {
@@ -60,10 +75,17 @@ public final class FASTAEntry {
 	public String getHeaderLine() {
 		return headerLine;
 	}
-
+	/**
+	 * @return line number of header.  -1 is returned if not set
+	 */
+	public int getHeaderLineNumber() {
+		return headerLineNumber;
+	}
 
 	private final Set<FASTAHeader> headers;
 	private final StringBuffer sequence;
 	private final String headerLine;
+	private final int headerLineNumber;
+
 
 }
