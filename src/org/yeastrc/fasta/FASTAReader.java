@@ -135,7 +135,7 @@ public class FASTAReader {
 
 		// the headers for this entry
 		Set<FASTAHeader> headers = new HashSet<FASTAHeader>();
-		StringBuffer sequence = new StringBuffer();
+		StringBuilder sequence = new StringBuilder();
 
 		line = line.substring(1, line.length());	// strip off the leading ">" on the header line
 
@@ -182,9 +182,13 @@ public class FASTAReader {
 			line  = this.br.readLine();
 			this.lastLineRead = line;
 		}
+		
+		String sequenceString = sequence.toString();
+		
+		sequenceString = sequenceString.trim();
 
 		// If we've made it here, we've read another sequence entry in the FASTA data
-		return new FASTAEntry( headers, sequence, headerLine, headerLineNumber );
+		return new FASTAEntry( headers, sequenceString, headerLine, headerLineNumber );
 	}
 
 	private BufferedReader br;

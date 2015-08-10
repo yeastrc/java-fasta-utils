@@ -35,7 +35,12 @@ public final class FASTAHeader {
 	}
 
 
-	public FASTAHeader( String line ) throws Exception {
+	/**
+	 * Constructor that parses a single header into it's parts
+	 * @param line
+	 * @throws Exception
+	 */
+	public FASTAHeader( String line ) throws FASTADataErrorException {
 
 		Pattern withoutDescription = Pattern.compile("^(\\S+)\\s*$");
 		Pattern withDescription    = Pattern.compile("^(\\S+)\\s+(\\S+.*)$");
@@ -52,9 +57,25 @@ public final class FASTAHeader {
 				this.description = m.group( 2 );
 				this.line = line;
 			} else {
-				throw new Exception( "Could not parse FASTA header line: \"" + line + "\"" );
+				throw new FASTADataErrorException( "Could not parse FASTA header line: \"" + line + "\"" );
 			}
 		}
+	}
+	
+
+	/**
+	 * Constructor that creates a new object from the provided parts
+	 * 
+	 * @param name
+	 * @param description
+	 * @param line
+	 * @throws Exception
+	 */
+	public FASTAHeader( String name, String description, String line ) {
+		
+		this.name = name;
+		this.description = description;
+		this.line = line;
 	}
 
 	public String getName() {

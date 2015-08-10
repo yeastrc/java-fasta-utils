@@ -45,7 +45,7 @@ public final class FASTAEntry {
 	 * @param sequence
 	 * @param headerLine
 	 */
-	public FASTAEntry( Set<FASTAHeader> headers, StringBuffer sequence, String headerLine ) {
+	public FASTAEntry( Set<FASTAHeader> headers, String sequence, String headerLine ) {
 		this.headers = headers;
 		this.sequence = sequence;
 		this.headerLine = headerLine;
@@ -59,7 +59,7 @@ public final class FASTAEntry {
 	 * @param sequence
 	 * @param headerLine
 	 */
-	public FASTAEntry( Set<FASTAHeader> headers, StringBuffer sequence, String headerLine, int headerLineNumber ) {
+	public FASTAEntry( Set<FASTAHeader> headers, String sequence, String headerLine, int headerLineNumber ) {
 		this.headers = headers;
 		this.sequence = sequence;
 		this.headerLine = headerLine;
@@ -69,7 +69,7 @@ public final class FASTAEntry {
 	public Set<FASTAHeader> getHeaders() {
 		return headers;
 	}
-	public StringBuffer getSequence() {
+	public String getSequence() {
 		return sequence;
 	}
 	public String getHeaderLine() {
@@ -83,7 +83,7 @@ public final class FASTAEntry {
 	}
 
 	private final Set<FASTAHeader> headers;
-	private final StringBuffer sequence;
+	private final String sequence;
 	private final String headerLine;
 	private final int headerLineNumber;
 
