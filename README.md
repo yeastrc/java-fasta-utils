@@ -7,9 +7,7 @@ Download the .jar from the [release page](https://github.com/yeastrc/java-fasta-
 Very simple example that uses java-fasta-utils to print information from a FASTA file
 
 ```java
-package org.yeastrc.fasta;
-
-import org.yeastrc.fasta.*;
+package org.uwpr.proteomics.fasta;
 
 /**
  * Very simple example for processing a FASTA file.
