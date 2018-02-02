@@ -1,4 +1,4 @@
-package org.yeastrc.fasta;
+package org.uwpr.proteomics.fasta;
 
 import java.nio.charset.Charset;
 import java.nio.charset.StandardCharsets;
