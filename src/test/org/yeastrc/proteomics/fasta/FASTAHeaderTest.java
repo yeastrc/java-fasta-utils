@@ -1,8 +1,9 @@
-package org.uwpr.proteomics.fasta;
+package org.yeastrc.proteomics.fasta;
 
 import static org.junit.Assert.*;
 
 import org.junit.Test;
+import org.yeastrc.proteomics.fasta.FASTAHeader;
 
 public class FASTAHeaderTest {
 

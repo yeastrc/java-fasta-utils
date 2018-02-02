@@ -14,7 +14,7 @@
  *   limitations under the License.
  */
 
-package org.uwpr.proteomics.fasta;
+package org.yeastrc.proteomics.fasta;
 
 import java.io.BufferedReader;
 import java.io.File;

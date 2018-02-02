@@ -14,7 +14,7 @@
  *   limitations under the License.
  */
 
-package org.uwpr.proteomics.fasta;
+package org.yeastrc.proteomics.fasta;
 
 import java.nio.charset.Charset;
 import java.nio.charset.StandardCharsets;

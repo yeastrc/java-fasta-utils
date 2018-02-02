@@ -14,7 +14,7 @@
  *   limitations under the License.
  */
 
-package org.uwpr.proteomics.fasta;
+package org.yeastrc.proteomics.fasta;
 
 /**
  * A data error has been found in the file being parsed.  

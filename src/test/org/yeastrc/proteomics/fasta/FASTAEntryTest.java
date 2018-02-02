@@ -1,4 +1,4 @@
-package org.uwpr.proteomics.fasta;
+package org.yeastrc.proteomics.fasta;
 
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNotEquals;
@@ -7,6 +7,9 @@ import java.util.HashSet;
 import java.util.Set;
 
 import org.junit.Test;
+import org.yeastrc.proteomics.fasta.FASTAEntry;
+import org.yeastrc.proteomics.fasta.FASTAHeader;
+import org.yeastrc.proteomics.fasta.FASTAReaderUtils;
 
 public class FASTAEntryTest {
 

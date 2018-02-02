@@ -14,7 +14,7 @@
  *   limitations under the License.
  */
 
-package org.uwpr.proteomics.fasta;
+package org.yeastrc.proteomics.fasta;
 
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
