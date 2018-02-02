@@ -137,26 +137,28 @@ public class FASTAReader {
 		Set<FASTAHeader> headers = new HashSet<FASTAHeader>();
 		StringBuilder sequence = new StringBuilder();
 
-		line = line.substring(1, line.length());	// strip off the leading ">" on the header line
+		line = FASTAReaderUtils.stripFirstCharacter( line );	// strip off the leading ">" on the header line
 
 		/*
 		 * In FASTA files, multiple headers can be associated with the same sequence, and will
 		 * be present on the same line.  The separate headers are separated by the CONTROL-A
 		 * character, so we split on that here, and save each to the headers Set
 		 */
-		String[] lineHeaders = line.split("\\cA");
+		String[] lineHeaders = FASTAReaderUtils.getSeperateHeaders( line );
 		for (int i = 0; i < lineHeaders.length; i++) headers.add( new FASTAHeader( lineHeaders[i] ) );
 
 		// The next line must be a sequence line
 		line = this.br.readLine();
 		this.lastLineRead = line;
 
-		while (line.startsWith( ";" )) {
+		// skip all comment lines
+		while ( FASTAReaderUtils.isCommentLine( line ) ) {
 			this.lineNumber++;
 			line = this.br.readLine();
 			this.lastLineRead = line;
 		}
-		if (line == null || line.startsWith( ">" ))
+		
+		if (line == null || FASTAReaderUtils.isHeaderLine( line ) )
 			throw new FASTADataErrorException( "Did not get a sequence line after a header line (Line Number: " + this.lineNumber );
 
 
@@ -164,14 +166,14 @@ public class FASTAReader {
 		while (line != null) {
 
 			//If we've reached a new header line (marked with a leading ">"), then we're done.
-			if (line.startsWith( ">" )) {
+			if ( FASTAReaderUtils.isHeaderLine( line ) ) {
 				break;
 			}
 
 			this.lineNumber++;
 
 			// build the sequence, if it's not a comment line
-			if (!line.startsWith( ";" )) {
+			if (!FASTAReaderUtils.isCommentLine( line ) ) {
 
 				// upper-case the sequence line
 				line = line.toUpperCase();

@@ -10,7 +10,7 @@ import org.junit.Test;
 
 public class FASTAEntryTest {
 
-	final char ctrlA = '\u0001';  
+	final char ctrlA = FASTAReaderUtils._CONTROL_A; 
 	
 	@Test
 	public void testCreateFromOneHeader() {
