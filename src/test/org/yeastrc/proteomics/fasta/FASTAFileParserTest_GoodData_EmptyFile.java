@@ -5,9 +5,7 @@ import static org.junit.Assert.assertNull;
 import java.io.ByteArrayInputStream;
 import java.io.IOException;
 import java.io.InputStream;
-import java.nio.charset.Charset;
 
-import org.apache.commons.io.IOUtils;
 import org.junit.Before;
 import org.junit.Test;
 
@@ -20,7 +18,7 @@ public class FASTAFileParserTest_GoodData_EmptyFile {
 	@Before
 	public void setUp() {
 		
-		_IS = new ByteArrayInputStream( new byte[0] );
+		_IS = new ByteArrayInputStream( new byte[0] );	// our simulated empty file
 		_READER = new FASTAFileLineReader( _IS );
 		_PARSER = new FASTAFileParser( _READER );
 		
