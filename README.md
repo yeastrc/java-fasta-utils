@@ -7,20 +7,20 @@ Download the .jar from the [release page](https://github.com/yeastrc/java-fasta-
 Very simple example that uses java-fasta-utils to print information from a FASTA file
 
 ```java
-package org.yeastrc.proteomics.fasta;
+package your.package;
+
+import org.yeastrc.proteomics.fasta.*;
 
 /**
  * Very simple example for processing a FASTA file.
- *
  */
 public class Example {
 
 	/**
-	 * Iterate over the supplied FASTA filename and print simple information to
-	 * console
+	 * Iterate over the supplied FASTA filename and print simple information to console
 	 * 
-	 * @param filename
-	 * @throws Exception
+	 * @param filename The filename to process.
+	 * @throws Exception If there is a problem.
 	 */
 	private void processFASTAFile( String filename ) throws Exception {
 
@@ -32,9 +32,7 @@ public class Example {
 				System.out.println( "Found this sequence: " + entry.getSequence() );		
 		
 			}
-		
 		}
-
 	}
 	
 
