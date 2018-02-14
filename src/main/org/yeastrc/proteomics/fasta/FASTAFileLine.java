@@ -16,18 +16,32 @@
 
 package org.yeastrc.proteomics.fasta;
 
-/**
- * A data error has been found in the file being parsed.  
- * 
- * The standard Exception message holds the message about the data error.
- *
- */
-public class FASTADataErrorException extends RuntimeException {
+public class FASTAFileLine {
 
-	private static final long serialVersionUID = 1L;
-
-	public FASTADataErrorException( String message ) {
-		
-		super(message);
+	@Override
+	public String toString() {
+		return "Line number: " + this.lineNumber + "\nLine: " + this.lineContent;
 	}
+	
+	public FASTAFileLine( Integer lineNumber, String lineContent ) {
+		this.lineNumber = lineNumber;
+		this.lineContent = lineContent;
+	}
+	
+	/**
+	 * @return the lineNumber
+	 */
+	public int getLineNumber() {
+		return lineNumber;
+	}
+	/**
+	 * @return the line
+	 */
+	public String getLineContent() {
+		return lineContent;
+	}
+	
+	private Integer lineNumber;
+	private String lineContent;
+	
 }

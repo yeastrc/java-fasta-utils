@@ -24,28 +24,17 @@ public class Example {
 	 */
 	private void processFASTAFile( String filename ) throws Exception {
 
-		// Instantiate a reader for the file with the supplied filename
-		FASTAReader reader = FASTAReader.getInstance( filename );
+		try ( FASTAFileParser parser = FASTAFileParserFactory.getInstance().getFASTAFileParser(  new File( filename ) ) ) {
 		
-		FASTAEntry entry = reader.readNext();
-		while( entry != null ) {
-
-			/*
-			 *  A given FASTA entry may have multiple headers associated with a
-			 *  sequence. Show them all.
-			 */
-			for( FASTAHeader header : entry.getHeaders() ) {
-				System.out.println( "Got a FASTA header with name=" +
-					header.getName() + " and description=" + header.getDescription() );
+			for ( FASTAEntry entry = parser.getNextEntry(); entry != null; entry = parser.getNextEntry() ) {		
+		
+				System.out.println( "Found " + entry.getHeaders().size() + " headers for this FASTA entry." );
+				System.out.println( "Found this sequence: " + entry.getSequence() );		
+		
 			}
-			
-			// show the sequence for this FASTA entry
-			System.out.println( "Got this sequence for those headers: " + entry.getSequence() + "\n" );
-			
-			// get the next entry in the FASTA file
-			entry = reader.readNext();
-		}
 		
+		}
+
 	}
 	
 

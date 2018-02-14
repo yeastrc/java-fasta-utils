@@ -2,7 +2,11 @@ package org.yeastrc.proteomics.fasta;
 
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertFalse;
+import static org.junit.Assert.assertNull;
 import static org.junit.Assert.assertTrue;
+
+import java.util.Collection;
+import java.util.HashSet;
 
 import org.junit.Test;
 import org.yeastrc.proteomics.fasta.FASTAReaderUtils;
@@ -28,13 +32,27 @@ public class FASTAReaderUtilsTest {
 	}
 	
 	@Test
+	public void testIsEmptyLine() {
+		
+		assertTrue( FASTAReaderUtils.isEmptyLine( "" ) );
+		assertTrue( FASTAReaderUtils.isEmptyLine( " " ) );
+		assertTrue( FASTAReaderUtils.isEmptyLine( "		" ) );
+		assertTrue( FASTAReaderUtils.isEmptyLine( "\n" ) );
+		assertTrue( FASTAReaderUtils.isEmptyLine( " \n" ) );
+
+		
+		
+		assertFalse( FASTAReaderUtils.isCommentLine( "a" ) );	
+	}
+	
+	@Test
 	public void testStripFirstChar() {
 		
 		assertEquals( "line", FASTAReaderUtils.stripFirstCharacter( ">line" ) );
 	}
 	
 	@Test
-	public void testSeparateHeaders() {
+	public void testGetSeparateHeaders() {
 		
 		String header1 = "name1 description1";
 		String header2 = "name2";
@@ -60,6 +78,47 @@ public class FASTAReaderUtilsTest {
 		assertEquals( header1, headers3[ 0 ] );
 		assertEquals( header2, headers3[ 1 ] );
 		assertEquals( header3, headers3[ 2 ] );
+	}
+	
+	@Test
+	public void testGetFASTAHeadersFromHeaderLine_InvalidHeader() {
+		
+		String headerLine = "invalid header line";
+		assertNull( FASTAReaderUtils.getFASTAHeadersFromHeaderLine( headerLine ) );
+		
+	}
+	
+	@Test
+	public void testGetFASTAHeadersFromHeaderLine_OneHeader() {
+		
+		String headerLine = ">protein_name valid header line";
+		
+		Collection<FASTAHeader> headers = FASTAReaderUtils.getFASTAHeadersFromHeaderLine( headerLine );
+
+		Collection<FASTAHeader> testHeaders = new HashSet<FASTAHeader>();
+		
+		FASTAHeader h1 = new FASTAHeader( "protein_name", "valid header line", "protein_name valid header line" );
+		
+		testHeaders.add( h1 );
+		
+		assertEquals( testHeaders, headers );
+	}
+	
+	@Test
+	public void testGetFASTAHeadersFromHeaderLine_TwoHeaders() {
+		
+		String headerLine = ">protein_name valid header line" + FASTAReaderUtils._CONTROL_A + "protein_name2 valid header line2";
+		Collection<FASTAHeader> headers = FASTAReaderUtils.getFASTAHeadersFromHeaderLine( headerLine );
+
+		Collection<FASTAHeader> testHeaders = new HashSet<FASTAHeader>();
+		
+		FASTAHeader h1 = new FASTAHeader( "protein_name", "valid header line", "protein_name valid header line" );
+		FASTAHeader h2 = new FASTAHeader( "protein_name2", "valid header line2", "protein_name2 valid header line2" );
+		
+		testHeaders.add( h1 );
+		testHeaders.add( h2 );
+		
+		assertEquals( testHeaders, headers );
 	}
 	
 }

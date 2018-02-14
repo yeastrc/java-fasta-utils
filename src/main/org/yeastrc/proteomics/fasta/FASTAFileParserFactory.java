@@ -16,18 +16,24 @@
 
 package org.yeastrc.proteomics.fasta;
 
-/**
- * A data error has been found in the file being parsed.  
- * 
- * The standard Exception message holds the message about the data error.
- *
- */
-public class FASTADataErrorException extends RuntimeException {
+import java.io.File;
+import java.io.FileNotFoundException;
 
-	private static final long serialVersionUID = 1L;
+public class FASTAFileParserFactory {
 
-	public FASTADataErrorException( String message ) {
-		
-		super(message);
+	private static final FASTAFileParserFactory _INSTANCE = new FASTAFileParserFactory();
+	private FASTAFileParserFactory() { }
+	public FASTAFileParserFactory getInstance() { return _INSTANCE; }
+	
+	/**
+	 * Use this to get the implementation of the FASTAFileParser to use.
+	 * 
+	 * @param file
+	 * @return
+	 * @throws FileNotFoundException
+	 */
+	public FASTAFileParser getFASTAFileParser( File fastaFile ) throws FileNotFoundException {
+		return new FASTAFileParser( FASTAFileLineReaderFactory.getInstance().getFASTAFileLineReader( fastaFile ) );
 	}
+	
 }

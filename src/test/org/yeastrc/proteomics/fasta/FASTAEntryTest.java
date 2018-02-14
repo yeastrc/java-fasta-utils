@@ -28,11 +28,10 @@ public class FASTAEntryTest {
 		
 		String sequence = "PEPTIDEPEPPPTIDE";				
 
-		FASTAEntry entry = new FASTAEntry( headers, sequence, line );
+		FASTAEntry entry = new FASTAEntry( headers, sequence );
 		
 		assertEquals( sequence, entry.getSequence() );
 		assertEquals( headers, entry.getHeaders() );
-		assertEquals( line, entry.getHeaderLine() );
 		
 	}
 	
@@ -55,17 +54,13 @@ public class FASTAEntryTest {
 		
 		FASTAHeader header2 = new FASTAHeader( name2, description2, line2 );
 		headers.add( header2 );
-		
-		String entryline = header1.getLine() + ctrlA + header2.getLine();
-		
+				
 		String sequence = "PEPTIDEPEPPPTIDE";				
 
-		FASTAEntry entry = new FASTAEntry( headers, sequence, entryline, 100 );
+		FASTAEntry entry = new FASTAEntry( headers, sequence );
 		
 		assertEquals( sequence, entry.getSequence() );
 		assertEquals( headers, entry.getHeaders() );
-		assertEquals( entryline, entry.getHeaderLine() );
-		assertEquals( 100, entry.getHeaderLineNumber() );
 		
 	}
 	
@@ -93,12 +88,10 @@ public class FASTAEntryTest {
 			
 			FASTAHeader header2 = new FASTAHeader( name2, description2, line2 );
 			headers.add( header2 );
-			
-			String entryline = header1.getLine() + ctrlA + header2.getLine();
-			
+						
 			String sequence = "PEPTIDEPEPPPTIDE";
 			
-			entry = new FASTAEntry( headers, sequence, entryline, 100 );
+			entry = new FASTAEntry( headers, sequence );
 		}
 		
 		
@@ -120,12 +113,10 @@ public class FASTAEntryTest {
 			
 			FASTAHeader header2 = new FASTAHeader( name2, description2, line2 );
 			headers.add( header2 );
-			
-			String entryline = header1.getLine() + ctrlA + header2.getLine();
-			
+						
 			String sequence = "PEPTIDEPEPPPTIDE";
 			
-			entry2 = new FASTAEntry( headers, sequence, entryline, 100 );
+			entry2 = new FASTAEntry( headers, sequence );
 		}
 		
 		assertEquals( entry, entry2 );
@@ -158,12 +149,10 @@ public class FASTAEntryTest {
 			
 			FASTAHeader header2 = new FASTAHeader( name2, description2, line2 );
 			headers.add( header2 );
-			
-			String entryline = header1.getLine() + ctrlA + header2.getLine();
-			
+						
 			String sequence = "PEPTIDEPEPPPTIDE";
 			
-			entry = new FASTAEntry( headers, sequence, entryline, 100 );
+			entry = new FASTAEntry( headers, sequence );
 		}
 		
 		// entry2 tests for different sequences
@@ -185,12 +174,10 @@ public class FASTAEntryTest {
 			
 			FASTAHeader header2 = new FASTAHeader( name2, description2, line2 );
 			headers.add( header2 );
-			
-			String entryline = header1.getLine() + ctrlA + header2.getLine();
-			
+						
 			String sequence = "PEPTIDEPEPPPTIDEE";
 			
-			entry2 = new FASTAEntry( headers, sequence, entryline, 100 );
+			entry2 = new FASTAEntry( headers, sequence );
 		}
 		
 		// entry3 tests for different headers
@@ -212,12 +199,10 @@ public class FASTAEntryTest {
 			
 			FASTAHeader header2 = new FASTAHeader( name2, description2, line2 );
 			headers.add( header2 );
-			
-			String entryline = header1.getLine() + ctrlA + header2.getLine();
-			
+						
 			String sequence = "PEPTIDEPEPPPTIDE";
 			
-			entry3 = new FASTAEntry( headers, sequence, entryline, 100 );
+			entry3 = new FASTAEntry( headers, sequence );
 		}
 		
 		
@@ -250,12 +235,10 @@ public class FASTAEntryTest {
 			
 			FASTAHeader header2 = new FASTAHeader( name2, description2, line2 );
 			headers.add( header2 );
-			
-			String entryline = header1.getLine() + ctrlA + header2.getLine();
-			
+						
 			String sequence = "PEPTIDEPEPPPTIDE";
 			
-			entry = new FASTAEntry( headers, sequence, entryline, 100 );
+			entry = new FASTAEntry( headers, sequence );
 		}
 		
 		
@@ -277,12 +260,10 @@ public class FASTAEntryTest {
 			
 			FASTAHeader header2 = new FASTAHeader( name2, description2, line2 );
 			headers.add( header2 );
-			
-			String entryline = header1.getLine() + ctrlA + header2.getLine();
-			
+						
 			String sequence = "PEPTIDEPEPPPTIDE";
 			
-			entry2 = new FASTAEntry( headers, sequence, entryline, 100 );
+			entry2 = new FASTAEntry( headers, sequence );
 		}
 		
 		assertEquals( entry.hashCode(), entry2.hashCode() );
@@ -313,12 +294,10 @@ public class FASTAEntryTest {
 			
 			FASTAHeader header2 = new FASTAHeader( name2, description2, line2 );
 			headers.add( header2 );
-			
-			String entryline = header1.getLine() + ctrlA + header2.getLine();
-			
+						
 			String sequence = "PEPTIDEPEPPPTIDE";
 			
-			entry = new FASTAEntry( headers, sequence, entryline, 100 );
+			entry = new FASTAEntry( headers, sequence );
 		}
 		
 		// entry2 tests for different sequences
@@ -341,11 +320,9 @@ public class FASTAEntryTest {
 			FASTAHeader header2 = new FASTAHeader( name2, description2, line2 );
 			headers.add( header2 );
 			
-			String entryline = header1.getLine() + ctrlA + header2.getLine();
-			
 			String sequence = "PEPTIDEPEPPPTIDEE";
 			
-			entry2 = new FASTAEntry( headers, sequence, entryline, 100 );
+			entry2 = new FASTAEntry( headers, sequence );
 		}
 		
 		// entry3 tests for different headers
@@ -368,11 +345,9 @@ public class FASTAEntryTest {
 			FASTAHeader header2 = new FASTAHeader( name2, description2, line2 );
 			headers.add( header2 );
 			
-			String entryline = header1.getLine() + ctrlA + header2.getLine();
-			
 			String sequence = "PEPTIDEPEPPPTIDE";
 			
-			entry3 = new FASTAEntry( headers, sequence, entryline, 100 );
+			entry3 = new FASTAEntry( headers, sequence );
 		}
 		
 		

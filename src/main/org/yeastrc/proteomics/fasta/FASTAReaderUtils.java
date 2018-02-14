@@ -16,6 +16,9 @@
 
 package org.yeastrc.proteomics.fasta;
 
+import java.util.Collection;
+import java.util.HashSet;
+
 public class FASTAReaderUtils {
 
 	final static char _CONTROL_A = '\u0001'; 
@@ -45,6 +48,21 @@ public class FASTAReaderUtils {
 	}
 
 	/**
+	 * Return true if this is an empty
+	 * 
+	 * @param line
+	 * @return
+	 */
+	public static boolean isEmptyLine( String line ) {
+		if( line.length() < 1 ) return true;
+		
+		line = line.trim();
+		if( line.length() < 1 ) return true;
+		
+		return false;
+	}
+	
+	/**
 	 * Return an array of strings, where each element is an individual header
 	 * in the FASTA header line, separated by control-A characters.
 	 * 
@@ -67,6 +85,36 @@ public class FASTAReaderUtils {
 		if( line == null ) return null;
 		
 		return line.substring(1, line.length());
+	}
+	
+	/**
+	 * Get the headers parsed from the FASTA header line in the form of >name description  Supports
+	 * multipe headers on the same line separated by control-a characters.
+	 * 
+	 * @param headerLineContent
+	 * @return A collection of headers, or null if this is not a header line
+	 */
+	public static Collection<FASTAHeader> getFASTAHeadersFromHeaderLine( String headerLineContent ) {
+		
+		
+		if( !isHeaderLine( headerLineContent ) )
+			return null;
+
+		
+		Collection<FASTAHeader> headers = new HashSet<>();
+		
+		headerLineContent = FASTAReaderUtils.stripFirstCharacter( headerLineContent );	// strip off the leading ">" on the header line
+
+		/*
+		 * In FASTA files, multiple headers can be associated with the same sequence, and will
+		 * be present on the same line.  The separate headers are separated by the CONTROL-A
+		 * character, so we split on that here, and save each to the headers Set
+		 */
+		String[] lineHeaders = FASTAReaderUtils.getSeperateHeaders( headerLineContent );
+		for (int i = 0; i < lineHeaders.length; i++)
+			headers.add( new FASTAHeader( lineHeaders[i] ) );
+		
+		return headers;
 	}
 	
 	

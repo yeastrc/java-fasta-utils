@@ -16,7 +16,7 @@
 
 package org.yeastrc.proteomics.fasta;
 
-import java.util.Set;
+import java.util.Collection;
 
 /**
  * Represents a header line + associated sequence in the FASTA file
@@ -45,47 +45,23 @@ public final class FASTAEntry {
 	 * @param sequence
 	 * @param headerLine
 	 */
-	public FASTAEntry( Set<FASTAHeader> headers, String sequence, String headerLine ) {
+	public FASTAEntry( Collection<FASTAHeader> headers, String sequence ) {
 		this.headers = headers;
 		this.sequence = sequence;
-		this.headerLine = headerLine;
-		this.headerLineNumber = -1; // set default
-	}
-	
-
-	/**
-	 * Get an immutable FASTAEntry
-	 * @param headers
-	 * @param sequence
-	 * @param headerLine
-	 */
-	public FASTAEntry( Set<FASTAHeader> headers, String sequence, String headerLine, int headerLineNumber ) {
-		this.headers = headers;
-		this.sequence = sequence;
-		this.headerLine = headerLine;
-		this.headerLineNumber = headerLineNumber;
 	}
 
-	public Set<FASTAHeader> getHeaders() {
+	public Collection<FASTAHeader> getHeaders() {
 		return headers;
 	}
 	public String getSequence() {
 		return sequence;
 	}
-	public String getHeaderLine() {
-		return headerLine;
-	}
-	/**
-	 * @return line number of header.  -1 is returned if not set
-	 */
-	public int getHeaderLineNumber() {
-		return headerLineNumber;
-	}
+	
 
-	private final Set<FASTAHeader> headers;
+
+
+	private final Collection<FASTAHeader> headers;
 	private final String sequence;
-	private final String headerLine;
-	private final int headerLineNumber;
 
 
 }
