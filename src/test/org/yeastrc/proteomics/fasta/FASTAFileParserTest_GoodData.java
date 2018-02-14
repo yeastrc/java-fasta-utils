@@ -32,7 +32,7 @@ public class FASTAFileParserTest_GoodData {
 		sb.append( "KMDJEKCDJDJKDMDKDKDDHDKSKQLSKKKKKKKKKDKIE\n" );
 		
 		sb.append( ">protein3 protein3 description\n" );
-		sb.append( "JSDKWIDSDKLSSSKS \n" );
+		sb.append( " JSDKWIDSDKLSSSKS \n" );
 		sb.append( "DLDKDKDLDGFKJDEKOLDJDS \n" );
 		sb.append( "\n" );
 		sb.append( "KDKDHHHHHHHHHHHWKWKSDKFDKDKSDKS\n" );
@@ -40,7 +40,7 @@ public class FASTAFileParserTest_GoodData {
 		sb.append( "\n" );
 		
 		sb.append( ">protein4 protein4 description\n" );
-		sb.append( "DLDLDKDJKRURJFDDDD\n" );
+		sb.append( " DLDLDKDJKRURJFDDDD\n" );
 		sb.append( "jjxjwidmkfgksjasjh\n" );
 		sb.append( "DKKKkkdkdkKDKEDKEKEKDK\n" );
 		

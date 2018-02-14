@@ -44,11 +44,17 @@ public class FASTAFileParser implements AutoCloseable {
 		if( !this._reader.hasReadData() ) {
 			headerLine = this._reader.readLine();			// if we haven't read anything yet, get the first line
 			
+			if( headerLine == null )						// should only happen on an empty file/inputstream
+				return null;
+			
 			// skip all comment lines and empty lines
 			while( FASTAReaderUtils.isCommentLine( headerLine.getLineContent() ) ||
 				   FASTAReaderUtils.isEmptyLine( headerLine.getLineContent() ) ) {
 			
 				headerLine = this._reader.readLine();
+				
+				if( headerLine == null )						// rest of file only contained empty lines and/or comments (no fasta entries)
+					return null;
 			}
 			
 		} else {

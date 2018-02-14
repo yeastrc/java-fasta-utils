@@ -53,7 +53,7 @@ public class FASTAReaderUtils {
 	 * @param line
 	 * @return
 	 */
-	public static boolean isEmptyLine( String line ) {
+	public static boolean isEmptyLine( String line ) {		
 		if( line.length() < 1 ) return true;
 		
 		line = line.trim();
