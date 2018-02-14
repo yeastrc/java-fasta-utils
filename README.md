@@ -2,7 +2,7 @@
 
 Java library for reading FASTA sequence files.
 
-Download the .jar from the [release page](https://github.com/yeastrc/java-fasta-utils/releases), and use org.yeastrc.proteomics.fasta.FASTAReader.getInstance(String filename), getInstance( InputStream is), or getInstance(File file) to instantiate a new FASTAReader and iteratively call readNext() until it returns null to process each entry in the FASTA file.
+Download the .jar from the [release page](https://github.com/yeastrc/java-fasta-utils/releases).
 
 Very simple example that uses java-fasta-utils to print information from a FASTA file
 
@@ -18,7 +18,7 @@ public class Example {
 	/**
 	 * Iterate over the supplied FASTA filename and print simple information to
 	 * console
-     * 
+	 * 
 	 * @param filename
 	 * @throws Exception
 	 */
