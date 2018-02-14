@@ -55,7 +55,7 @@ public class FASTAFileParserTest_GoodData {
 	public void testGetNextEntry() throws IOException {
 
 		{
-			// test first entry
+			// test first entry - multiline sequence
 			
 			FASTAEntry entry = _PARSER.getNextEntry();
 			
@@ -71,7 +71,7 @@ public class FASTAFileParserTest_GoodData {
 		}
 		
 		{
-			// test second entry
+			// test second entry - single line sequence
 			
 			FASTAEntry entry = _PARSER.getNextEntry();
 			
@@ -91,7 +91,7 @@ public class FASTAFileParserTest_GoodData {
 		
 		
 		{
-			// test third entry
+			// test third entry - sequence has spaces, blank line
 			
 			FASTAEntry entry = _PARSER.getNextEntry();
 			
@@ -107,7 +107,7 @@ public class FASTAFileParserTest_GoodData {
 		}
 		
 		{
-			// test fourth entry
+			// test fourth entry - sequence has space, lowercase chars
 			
 			FASTAEntry entry = _PARSER.getNextEntry();
 			
