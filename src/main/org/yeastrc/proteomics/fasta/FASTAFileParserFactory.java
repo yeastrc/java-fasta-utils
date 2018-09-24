@@ -22,9 +22,9 @@ import java.io.FileNotFoundException;
 public class FASTAFileParserFactory {
 
 	private static final FASTAFileParserFactory _INSTANCE = new FASTAFileParserFactory();
+	public static FASTAFileParserFactory getInstance() { return _INSTANCE; }
 	private FASTAFileParserFactory() { }
-	public FASTAFileParserFactory getInstance() { return _INSTANCE; }
-	
+
 	/**
 	 * Use this to get the implementation of the FASTAFileParser to use.
 	 * 
