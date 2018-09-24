@@ -140,7 +140,7 @@ public class FASTAFileParser implements AutoCloseable {
 
 
 	@Override
-	public void close() throws Exception {
+	public void close() throws IOException {
 		if( this._reader != null ) {
 			this._reader.close();
 			this._reader = null;
