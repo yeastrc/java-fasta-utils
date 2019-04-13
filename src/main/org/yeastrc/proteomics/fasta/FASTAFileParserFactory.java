@@ -18,6 +18,7 @@ package org.yeastrc.proteomics.fasta;
 
 import java.io.File;
 import java.io.FileNotFoundException;
+import java.io.InputStream;
 
 public class FASTAFileParserFactory {
 
@@ -34,6 +35,10 @@ public class FASTAFileParserFactory {
 	 */
 	public FASTAFileParser getFASTAFileParser( File fastaFile ) throws FileNotFoundException {
 		return new FASTAFileParser( FASTAFileLineReaderFactory.getInstance().getFASTAFileLineReader( fastaFile ) );
+	}
+
+	public FASTAFileParser getFASTAFileParser( InputStream is ) {
+		return new FASTAFileParser( FASTAFileLineReaderFactory.getInstance().getFASTAFileLineReader( is ) );
 	}
 	
 }
