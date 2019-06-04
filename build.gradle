@@ -1,0 +1,19 @@
+apply plugin: 'java'
+
+sourceCompatibility = 1.8
+targetCompatibility = 1.8
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    testCompile "junit:junit:4.12"
+    testCompile "commons-io:commons-io:2.6"
+}
+
+jar {
+    configurations {
+        jar.archiveName = 'yrc-fasta-utils.jar'
+    }
+}
