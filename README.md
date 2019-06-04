@@ -1,3 +1,5 @@
+[![Build Status](https://travis-ci.com/yeastrc/java-fasta-utils.svg?branch=master)](https://travis-ci.com/yeastrc/java-fasta-utils)
+
 # java-fasta-utils
 
 Java library for reading FASTA sequence files.
