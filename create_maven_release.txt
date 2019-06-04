@@ -1,0 +1,1 @@
+c:\apache-maven-3.6.1\bin\mvn install:install-file -DgroupId=org.yeastrc -DartifactId=yrc-fasta-utils -Dversion=2.0.2 -Dfile=build\libs\yrc-fasta-utils.jar -Dpackaging=jar -DgeneratePom=true -DlocalRepositoryPath=.  -DcreateChecksum=true
